@@ -70,7 +70,12 @@ One now sees some analogy with the notion of a regular local ring.
 \end{definition}
 So for every regular local ring of Krull dimension~$n$ we get a regular sequence of length~$n$.
 
+
 \subsection{Cohen--Macaulay rings}
+% depth measures the codimension using hypersurfaces for CM rings
+% Krull dimension goes from bottom to top: point, curve, surface
+% depth goes from top to bottom: intersecting hypersurfaces
+% in some sense: difference between Weil (= Krull, although they are of course codimension 1) and Cartier (= depth) divisors
 
 \subsection{Gorenstein rings}
 To define the notion of a Gorenstein ring we will take the ``easier'' or ``modern'' definition that is used nowadays. In \cref{lemma:gorenstein-CM-relation} the equivalence with the classical definition will be discussed.
@@ -89,9 +94,14 @@ We haven't argumented why having finite injective dimension is a reasonable thin
   Gorenstein rings are named after Daniel Gorenstein, who introduced them in 1952 \cite{gorenstein-arithmetic-theory-adjoint-plane-curves} in the case of singular points curves. This zero-dimensional case was generalised later on by Bass \cite{bass-ubiquity-gorenstein-rings}, Grothendieck \cite{grothendieck-theoremes-de-dualite} (studying duality results, as discussed in a previous lecture series!) and Serre \cite{serre-sur-les-modules-projectifs}. Famously, Daniel Gorenstein used to say that he didn't understand the definition of a Gorenstein ring himself. He is mostly known for his great contributions to the classification of finite simple groups.
 \end{remark}
 
+\begin{enumerate}
+  \item 
+\end{enumerate}<++>
+
 
 \section{Properties}
 \subsection{Relations between regular, Gorenstein and Cohen--Macaulay rings}
+% TODO discuss the three implications
 
 \subsection{Complete intersections}
 We now discuss an important class of Gorenstein rings.
@@ -122,7 +132,6 @@ Introducing this notion is interesting, because we have \cite[corollary 21.19]{e
 \end{theorem}
 The proof uses the fact that we have a Koszul resolution by the regular sequence, which is a minimal free resolution of~$A/I$. This gives us information on the highest Ext-group of~$A/I$ and~$A$, and by the relationship between dualising objects and Gorenstein rings \cite[theorem 21.15]{eisenbud-commutative-algebra} we get the result.
 
-\subsection{Some other facts}
 
 \subsection{Counterexamples}
 So we have a hierarchy of being singular:
@@ -162,6 +171,38 @@ Now that we have seen a counterexample, we can discuss some other restrictions t
   \item in codimension 1 we have that Cohen--Macaulay is equivalent to Gorenstein \cite[corollary 21.20]{eisenbud-commutative-algebra};
 \end{enumerate}
 
+\paragraph{Not Cohen--Macaulay}
+To find a ring that is not Cohen--Macaulay we can do several things. The following results tell us where to look:
+\begin{enumerate}
+  \item Cohen--Macaulay rings are universally catenary \cite[corollary 18.10]{eisenbud-commutative-algebra};
+  \item Cohen--Macaulay rings are equidimensional \cite[corollary 18.11]{eisenbud-commutative-algebra};
+  \item if~$A$ is Cohen--Macaulay, $I$ and~$J$ are proper ideals of~$A$ such that their radicals are incomparable \expand then~$\codim(I+J)\leq 1$, \cite[theorem 18.12]{eisenbud-commutative-algebra}.
+\end{enumerate}
+This first condition is virtually useless: rings that are not universally catenary are really hard to come up with. For an example, see \addreference{Stacks project}.
+
+The second condition is more promising. Recall that being \emph{equidimensional} means that all the maximal ideals have the same codimension, and all minimal primes have the same dimension. For a local ring (without embedded components) this reduces to the geometric property of all irreducible components having the same dimension. So finding an example becomes easy.
+\begin{example}
+  The intersection of a plane and a line in a single point is not Cohen--Macaulay. At the singular point there are two minimal primes: one corresponding to the plane and one corresponding to the line. These don't have the same dimension, hence the ring is not Cohen--Macaulay.
+\end{example}
+
+The third condition is also interesting, and is related to what we will discuss in \cref{subsection:intersection-multiplicity}. Geometrically speaking we have to find a situation in which we have two things intersection eachother in a single point such that removing the point from the spectrum of the local ring makes the resulting topological space disconnected. As the codimension should be smaller than~$1$ we can interpret it this way: in this case 
+\begin{example}
+  Consider the intersection of two planes inside~$\mathbb{A}_k^4$, in a single point. This is possible (think linear algebra) and has a picture associated to it. If we remove the closed point in the local ring for the intersection we end up with two components which are disjoint, hence this ring cannot be Cohen--Macaulay.
+\end{example}
+
+\subsection{Some facts}
+Without further ado, some random facts on the rings we have seen so far:
+\begin{enumerate}
+  \item $A$ is Cohen--Macaulay if and only if~$A[x]$ is Cohen--Macaulay \cite[proposition 18.9]{eisenbud-commutative-algebra};
+  \item \ldots
+\end{enumerate}
+
+
+\subsection{Intersection multiplicity}
+Cohen--Macaulay rings are the type of rings for which intersection multiplicity works.
+\begin{example}
+  \ldots
+\end{example}
 
 
 \begin{enumerate}
