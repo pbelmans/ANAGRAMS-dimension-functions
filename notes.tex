@@ -18,6 +18,71 @@
 
 \clearpage
 
+\section{Definitions}
+Before we start: let's try to motivate things a little. All rings will be commutative (strictly speaking not necessary, but we'll take algebraic geometry as main motivation) and unital. Let's for the ease of statement assume that they are noetherian too (!). Often we will be working with local rings, but whenever we do so we will be explicit about it.
+
+We have seen \emph{Krull dimension} in a previous lecture, which was a measure of ``how big the ring is'', geometrically speaking: the Krull dimension of the ring~$A$ is equal to the dimension of the topological space~$\Spec A$\footnote{This is a noetherian topological space, hence dimension is defined as the supremum over the lengths of descending chains of closed subsets. So they must agree, by the very definition of the Zariski topology.}.
+
+\subsection{Depth and regular sequences}
+Another thing that we can study is the \emph{codimension} of an ideal~$I$ in~$A$: how does~$\Spec A/I$ relate to~$\Spec A$? As we have taken~$A$ noetherian we have that~$I$ is finitely generated. Is there a way of choosing the generators of~$I$ in such a way that we can deduce something interesting?
+\begin{definition}
+  Let~$A$ be a ring. Let~$M$ be an~$A$\dash module. A sequence of elements~$x_1,\dotsc,x_n\in A$ is a \emph{regular sequence} on~$M$ if
+  \begin{enumerate}
+    \item $(x_1,\dotsc,x_n)M\neq M$;
+    \item $x_i$ is a non-zerodivisor on~$M/(x_1,\dotsc,x_{i-1})M$ for all~$i=1,\dotsc,n$.
+  \end{enumerate}
+\end{definition}
+\begin{example}
+  Take~$A=k[x,y,z]$ with~$k$ a field. Take~$M=A$. Then the most classical regular sequence would be
+  \begin{equation}
+    x,y,z.
+  \end{equation}
+  But this one is boring. Let's look at:
+  \begin{equation}
+    x,y(1-x),z(1-x),
+  \end{equation}
+  which is is a regular sequence:
+  \begin{enumerate}
+    \item we have~$1\notin(x,y(1-x),z(1-x))$;
+    \item $x$ is not a zerodivisor in~$k[x,y,z]$, $y$ is not a zerodivisor in~$k[y,z]$ and~$z$ is not a zerodivisor in~$k[z]$.
+  \end{enumerate}
+  On the other hand,
+  \begin{equation}
+    y(1-x),z(1-x),x
+  \end{equation}
+  is not a regular sequence:
+  \begin{enumerate}
+    \item the ideal generated is the same as for the previous regular sequence, so the first condition is still satisfied;
+    \item the condition fails already at the second step:
+      \begin{equation}
+        z(1-x)y=zy-zxy=zy-zy=0.
+      \end{equation}
+  \end{enumerate}
+  Hence the order of the regular sequence is important.
+\end{example}
+Fortunately, if we look at local rings, things are nicer \cite[corollary 17.2]{eisenbud-commutative-algebra}.
+\begin{corollary}
+  Let~$A$ be a local ring\footnote{Recall that all rings are noetherian. I won't repeat this from now on, but it's important to know this} with maximal ideal~$\mathfrak{m}$. If~$a_1,\dotsc,a_n$ is a regular sequence with~$a_i\in\mathfrak{m}$, then any permutation is again a regular sequence.
+\end{corollary}
+One now sees some analogy with the notion of a regular local ring.
+\begin{definition}
+  Let~$A$ be a local ring with maximal ideal~$\mathfrak{m}$. If~$\mathfrak{m}=(a_1,\dotsc,a_n)$ is a way of generating~$\mathfrak{m}$ with a minimal number of generators such that~$\dim A=n$, then~$A$ is \emph{regular}.
+\end{definition}
+So for every regular local ring of Krull dimension~$n$ we get a regular sequence of length~$n$.
+
+\subsection{Cohen--Macaulay rings}
+
+\subsection{Gorenstein rings}
+
+
+\section{Properties}
+
+
+\section{Geometric intuition}
+
+
+
+
 \begin{enumerate}
   \item CM: Hartshorne's connectedness theorem (non-example: planes in P4)
   \item CM: equidimensional
