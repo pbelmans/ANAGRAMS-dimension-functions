@@ -97,7 +97,13 @@ So the depth is a measure of how much we can cut down things using hypersurfaces
 \end{equation}
 as cutting down by a hypersurface can at most drop the dimension by~1 (recall Krull's principal ideal theorem). So the depth of a ring (i.e.\ the depth of the ring over itself) measures how much we can cut things down in a non-trivial way.
 
-For examples of computing the depth of a ring we refer to \cref{section:properties}, where we give some geometric examples of the (in)equality \eqref{equation:depth-dim-inequality}.
+\begin{example}
+  Let~$A=k[x,y]/(x^2,xy)$. This represents the affine line with an embedded double point at the origin. So we localise this ring with respect to the origin. The Krull dimension of this ring is~$1$: it is the local ring of the affine line (plus some lower-dimensional stuff).
+  
+  The depth of this local ring is~$0$: we cannot cut down the embedded component in the direction of the~$y$\dash axis any further. If there was no ``fuzzy direction'', i.e.\ if we started with~$k[x,y]/(xy)$ there wouldn't be a problem. We would have two one-dimensional components, related to the two axes, and we can cut them down by a hypersurface. So the problem is related to the ring having components of different dimension, which is a condition that has to be satisfied for the equality \eqref{equation:depth-dim-inequality} to hold, as seen in \cref{subsection:counterexamples}.
+\end{example}
+
+For more examples of computing the depth of a ring we refer to \cref{section:properties}, where we give some more geometric examples of the (in)equality \eqref{equation:depth-dim-inequality}.
 
 
 \subsection{Cohen--Macaulay rings}
@@ -107,7 +113,7 @@ The (in)equality \eqref{equation:depth-dim-inequality} allows to make the follow
   \begin{equation}
     \depth_{\mathfrak{m}}(A)=\dim(A).
   \end{equation}
-  Let~$A$ be any ring. Then~$\mathcal{A}$ is \emph{Cohen--Macaulay} if the localisation~$A_{\mathfrak{p}}$ is Cohen--Macaulay for all~$\mathfrak{p}\sin\Spec A$.
+  Let~$A$ be any ring. Then~$\mathcal{A}$ is \emph{Cohen--Macaulay} if the localisation~$A_{\mathfrak{p}}$ is Cohen--Macaulay for all~$\mathfrak{p}\in\Spec A$.
 \end{definition}
 As a matter of fact, it suffices to impose this condition only at the closed points \cite[proposition 18.8]{eisenbud-commutative-algebra}.
 
