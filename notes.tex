@@ -19,13 +19,16 @@
 \clearpage
 
 \section{Definitions}
+\label{section:definitions}
 All rings will be commutative (strictly speaking not necessary, but we'll take algebraic geometry as main motivation) and unital. Let's for the ease of statement assume that they are noetherian too (!). Often we will be working with local rings, but whenever we do so we will be explicit about it.
+
+The main references are \cite{sga2,eisenbud-commutative-algebra,serre-algebre-locale}. Each of them has a different take on the subject, different emphasis and different goals.
 
 We have seen \emph{Krull dimension} in a previous lecture, which was a measure of ``how big the ring is'', geometrically speaking: the Krull dimension of the ring~$A$ is equal to the dimension\footnote{It is a noetherian topological space, hence dimension is defined as the supremum over the lengths of descending chains of closed subsets. So they must agree, by the very definition of the Zariski topology.} of the topological space~$\Spec A$.
 
 But Krull dimension alone is not a sufficient measure in algebraic geometry. If we consider singularities we want to know some properties of them: can we ``measure'' how singular things are? Of course, the dimension of the singular locus is something that could interest us: if we intersect two lines in a single point, or we intersect two planes in a line, we get a measure on the size of the singular locus. But what if we want to know something about ``how complicated'' a singularity is?
 
-\subsection{Depth and regular sequences}
+\subsection{Regular sequences}
 Something that we can study besides Krull dimension is the \emph{codimension} of an ideal~$I$ in~$A$. The question becomes: how does~$\Spec A/I$ relate to~$\Spec A$? As we have taken~$A$ noetherian we have that~$I$ is finitely generated. Is there a way of choosing the generators of~$I$ in such a way that we can deduce something interesting?
 \begin{definition}
   Let~$A$ be a ring. Let~$M$ be a module over~$A$. A sequence of elements~$x_1,\dotsc,x_n$ in~$A$ is a \emph{regular sequence} on~$M$ if
@@ -73,21 +76,32 @@ One now sees some analogy with the notion of a regular local ring.
 So for every regular local ring of Krull dimension~$n$ we get a regular sequence of length~$n$. The goal of this note is to show that by relaxing the definition of regular we can get many results for singular rings which are analogous to the regular case.
 
 \subsection{Depth}
+Knowing what a regular sequence is we can introduce depth.
 \begin{definition}
   Let~$A$ be a ring. Let~$I$ be an ideal of~$A$. Let~$M$ be a finitely generated module over~$A$ such that~$IM\neq M$. Then the \emph{depth} of~$I$ with respect to~$M$ is the number
   \begin{equation}
     \depth_I(M)\coloneqq\min_{i\in\mathbb{N}}\left\{ i\mid\Ext_A^i(A/I,M)\neq 0 \right\}
   \end{equation}
 \end{definition}
-Unfortunately, this definition does not have a geometric flavour to it. The following result by David Rees shows that we do have a geometric interpretation.
+Unfortunately, this definition does not have a geometric flavour to it. It is known as \emph{codimension homologique} in \cite{serre-algebre-locale}, for which the motivation (besides the obvious homological flavour to the definition) can be found in \cite[proposition 21]{serre-algebre-locale}.
+. The term \emph{grade} is also in use by the way.
+
+The following result by David Rees shows that we do have a geometric interpretation.
 \begin{theorem}
   Let~$(A,\mathfrak{m})$ be a local ring. Let~$M$ be a finitely generated~$A$\dash module. Then all maximal regular sequences~$x_1,\dotsc,x_n$ for~$M$ such that~$x_i\in\mathfrak{m}$ have length equal to~$\depth_{\mathfrak{m}}(M)$.
 \end{theorem}
+So the depth is a measure of how much we can cut down things using hypersurfaces, where each intersection has to drop the dimension by~1. This also yields the bound
+\begin{equation}
+  \label{equation:depth-dim-inequality}
+  \depth_{\mathfrak{m}}(A)\leq\dim A
+\end{equation}
+as cutting down by a hypersurface can at most drop the dimension by~1 (recall Krull's principal ideal theorem). So the depth of a ring (i.e.\ the depth of the ring over itself) measures how much we can cut things down in a non-trivial way.
+
+For examples of computing the depth of a ring we refer to \cref{section:properties}, where we give some geometric examples of the (in)equality \eqref{equation:depth-dim-inequality}.
 
 
 \subsection{Cohen--Macaulay rings}
-% depth measures the codimension using hypersurfaces for CM rings
-
+The (in)equality \eqref{equation:depth-dim-inequality} allows to make the following definition.
 \begin{definition}
   Let~$(A,\mathfrak{m})$ be a local ring. Then~$A$ is \emph{Cohen--Macaulay} if
   \begin{equation}
@@ -122,10 +136,13 @@ We haven't argumented why having finite injective dimension is a reasonable thin
 
 
 \section{Properties}
+\label{section:properties}
 \subsection{Relations between regular, Gorenstein and Cohen--Macaulay rings}
+\label{subsection:relations}
 % TODO discuss the three implications
 
 \subsection{Complete intersections}
+\label{subsection:complete-intersections}
 We now discuss an important class of Gorenstein rings.
 \begin{definition}
   Let~$V$ be an algebraic variety inside~$\mathbb{P}_k^n$ such that~$\dim V=m$. Then~$V$ is a \emph{complete intersection} if the ideal describing~$V$ can be generated by exactly~$n-m$ elements (and no more).
@@ -154,8 +171,8 @@ Introducing this notion is interesting, because we have \cite[corollary 21.19]{e
 \end{theorem}
 The proof uses the fact that we have a Koszul resolution by the regular sequence, which is a minimal free resolution of~$A/I$. This gives us information on the highest Ext-group of~$A/I$ and~$A$, and by the relationship between dualising objects and Gorenstein rings \cite[theorem 21.15]{eisenbud-commutative-algebra} we get the result.
 
-
 \subsection{Counterexamples}
+\label{subsection:counterexamples}
 So we have a hierarchy of being singular:
 \begin{enumerate}
   \item regular;
@@ -213,7 +230,8 @@ The third condition is also interesting, and is related to what we will discuss 
 \end{example}
 
 \subsection{Some facts}
-Without further ado, some random facts on the rings we have seen so far:
+\label{subsections:facts}
+Without further ado, some random facts on the properties we have seen so far:
 \begin{enumerate}
   \item $A$ local is Cohen--Macaulay if and only if~$\hat{A}$ is Cohen--Macaulay \cite[proposition 18.8]{eisenbud-commutative-algebra};
   \item $A$ is Cohen--Macaulay if and only if~$A[x]$ is Cohen--Macaulay \cite[proposition 18.9]{eisenbud-commutative-algebra};
@@ -222,6 +240,7 @@ Without further ado, some random facts on the rings we have seen so far:
 \end{enumerate}
 
 \subsection{Auslander--Buchsbaum formula}
+\label{subsection:auslander-buchsbaum}
 A less random fact is the \emph{Auslander--Buchsbaum formula} \cite[theorem 19.9]{eisenbud-commutative-algebra}. It relates the projective dimension to the depth by saying that they are complementary to eachother.
 \begin{theorem}
   Let~$(A,\mathfrak{m})$ be a local ring. Let~$M$ be a finitely generatd~$A$\dash module such that~$\projdim_A(M)<+\infty$. Then
@@ -236,7 +255,8 @@ This allows one to obtain a recognition theorem for Cohen--Macaulay rings \cite[
 As a final application: recall from Erik's lecture on homological dimensions that regular local rings have finite global dimensions. This is actually an equivalence! 
 
 \subsection{Intersection multiplicity}
-Cohen--Macaulay rings are the type of rings for which intersection multiplicity works.
+\label{subsection:intersection-multiplicity}
+Cohen--Macaulay rings are the type of rings for which intersection multiplicity ``works as expected''. The same phenomenon of ``working as expected'' is pervasive for these mildly singular rings, another manifestation will be seen in the next paragraph.
 \begin{example}
   \ldots
 \end{example}
@@ -248,7 +268,7 @@ During my lectures on Grothendieck duality I have often used the term ``mildly s
   The material of this paper seems to have connections with Grothendieck's Bourbaki expos\'e on duality theorems \cite{grothendieck-theoremes-de-dualite}, but which I am not competent to elaborate. Undoubtedly all of what follows is peripheral to the ideas of that paper.
 \end{quote}
 Recall that Grothendieck duality was concerned with the existence of a dualising complex \cite{hartshorne-residues-and-duality}, generalising the idea of duality of (finite-dimensional) vectorspaces. One of the main questions (besides its existence) are the properties of this dualising complex. If one knows something about how singular the scheme in question is we can get the answer, which is given in \cref{table:comparison-X-dualising-sheaf}.
-\begin{table}[p]
+\begin{table}[ht]
   \centering
   \begin{tabular}{cc}
     \toprule
